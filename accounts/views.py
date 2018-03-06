@@ -13,6 +13,7 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
 
+
 # Create your views here.
 def register(request):
     if request.method == 'POST':
@@ -26,9 +27,7 @@ def register(request):
                     card=form.cleaned_data['stripe_id'],
                 )
                 if customer.paid:
-                    form.save()
-                    user = auth.authenticate(email=request.POST.get('email'),
-                                        password=request.POST.get('password1'))
+                    user = form.save()
                     if user:
                         auth.login(request, user)
                         messages.success(request, "You have successfully registered")
@@ -63,7 +62,7 @@ def login(request):
 
             if user is not None:
                 auth.login(request, user)
-                messages.error(request, "You have successfully logged in")
+                messages.success(request, "You have successfully logged in")
                 return redirect(reverse('profile'))
             else:
                 form.add_error(None, "Your email or password was not recognised")
@@ -79,4 +78,5 @@ def login(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
+
     return redirect(reverse('index'))

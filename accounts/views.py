@@ -16,6 +16,7 @@ stripe.api_key = settings.STRIPE_SECRET
 # Create your views here.
 def register(request):
     if request.method == 'POST':
+        # import pdb; pb.set_trace()
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             try:
@@ -26,9 +27,8 @@ def register(request):
                     card=form.cleaned_data['stripe_id'],
                 )
                 if customer.paid:
-                    form.save()
-                    user = auth.authenticate(email=request.POST.get('email'),
-                                        password=request.POST.get('password1'))
+                    user = form.save()
+
                     if user:
                         auth.login(request, user)
                         messages.success(request, "You have successfully registered")

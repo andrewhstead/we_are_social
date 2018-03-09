@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'hello',
     'reusable_blog',
     'threads',
+    'polls',
 ]
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -155,5 +156,3 @@ MEDIA_URL = '/media/'
 
 # tinymce settings
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
-
-DEBUG_TOOLBAR_PATCH_SETTINGS = False

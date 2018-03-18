@@ -12,7 +12,7 @@ STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_MqkEKmeAamO8IWBasq
 STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_kLGpsYB2d5Ho77Rdi8x6Ol50')
 
 # Paypal environment variables
-PAYPAL_NOTIFY_URL = 'https://932261df.ngrok.io/a-very-hard-to-guess-url/'
+PAYPAL_NOTIFY_URL = 'https://we-are-social-code-institute.herokuapp.com/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'andrew-facilitator@andrewstead.co.uk'
 
 SITE_URL = 'https://we-are-social-code-institute.herokuapp.com'
